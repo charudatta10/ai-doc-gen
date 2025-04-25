@@ -21,7 +21,7 @@
 
 ## Documentation
 
-generate project documentatention using ai   
+generate project documentatention using ai.
 
 ## Features
 

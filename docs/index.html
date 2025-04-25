@@ -1,92 +1,31 @@
+<!-- © 2025 Charudatta Korde. Some Rights Reserved. Attribution Required. Non-Commercial Use & Share-Alike. -->
+<!-- https://raw.githubusercontent.com/charudatta10/task-runner-SDLC/refs/heads/main/src/templates/LICENSE -->
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Carousel</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <style>
-    .slide-image {
-      object-fit: cover;
-      object-position: center;
-    }
-  </style>
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
 </head>
-<body class="h-full grid place-items-center bg-gray-100">
-  <div 
-    x-data="{
-      currentIndex: 0,
-      slides: [
-        { 
-          image: 'image1.jpg',
-          title: 'Nature View 1'
-        },
-        { 
-          image: 'image2.jpg', 
-          title: 'Nature View 2'
-        },
-        { 
-          image: 'image3.jpg', 
-          title: 'Nature View 3'
-        },
-        { 
-          image: 'image4.jpg', 
-          title: 'Nature View 4'
-        },
-        { 
-          image: 'image5.jpg', 
-          title: 'Nature View 5'
-        }
-      ],
-      autoplay: true
-    }" 
-    x-init="if (autoplay) setInterval(() => currentIndex = (currentIndex + 1) % slides.length, 30000)"
-    class="relative w-full max-w-2xl h-96 overflow-hidden rounded-xl shadow-xl"
-    @mouseenter="autoplay = false"
-    @mouseleave="autoplay = true"
-  >
-    <!-- Slides -->
-    <div class="flex h-full transition-transform duration-10000" 
-         :style="`transform: translateX(-${currentIndex * 100}%)`">
-      <template x-for="(slide, index) in slides" :key="index">
-        <div class="w-full h-full flex-shrink-0 relative">
-          <img 
-            :src="slide.image" 
-            :alt="slide.title"
-            class="slide-image w-full h-full"
-          >
-          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-            <h3 class="text-white text-xl font-bold" x-text="slide.title"></h3>
-          </div>
-        </div>
-      </template>
-    </div>
-
-    <!-- Navigation -->
-    <button 
-      @click="currentIndex = (currentIndex - 1 + slides.length) % slides.length"
-      class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition-all"
-    >
-      &lt;
-    </button>
-    <button 
-      @click="currentIndex = (currentIndex + 1) % slides.length"
-      class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition-all"
-    >
-      &gt;
-    </button>
-
-    <!-- Indicators -->
-    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-      <template x-for="(_, index) in slides" :key="index">
-        <button 
-          @click="currentIndex = index"
-          class="w-3 h-3 rounded-full transition-all"
-          :class="currentIndex === index ? 'bg-white w-6' : 'bg-white/50'"
-        ></button>
-      </template>
-    </div>
-  </div>
+<body>
+<div id="app"></div>
+<script>
+  window.$docsify = {
+    name: 'ai-doc-gen',
+    repo: 'charudatta10/ai-doc-gen',
+    loadsidebar: true,
+    subMaxLevel: 2,
+    auto2top: true,
+    loadNavbar: "_navbar.md", 
+    coverpage: "_coverpage.md",
+    homepage: "_homepage.md"
+  }
+</script>
+<!-- Docsify v4 -->
+<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>
