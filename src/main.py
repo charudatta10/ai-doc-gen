@@ -3,6 +3,8 @@ import subprocess
 import json
 from pathlib import Path
 from typing import Dict, List, Optional
+import ollama
+
 
 class DocumentationGenerator:
     def __init__(self, repo_path: str, output_dir: str = "docs"):
@@ -104,7 +106,7 @@ class DocumentationGenerator:
         
         return repo_info
     
-    def generate_with_ollama(self, prompt: str, context: str = "", model: str = "deepseek") -> str:
+    def generate_with_ollama(self, prompt: str, context: str = "", model: str = "llama3.2:3b") -> str:
         """
         Generate documentation using Ollama with the specified model.
         
@@ -133,25 +135,17 @@ class DocumentationGenerator:
         """
         
         try:
-            # Prepare the input for Ollama
-            input_data = {
-                "model": model,
-                "prompt": full_prompt,
-                "stream": False
-            }
-            
+                        
             # Call Ollama via subprocess
-            result = subprocess.run(
-                ["ollama", "generate"],
-                input=json.dumps(input_data),
-                capture_output=True,
-                text=True,
-                check=True
+            result = ollama.generate(
+                model=model,
+                prompt=full_prompt,
+                stream=False
             )
             
             # Parse the response
-            response = json.loads(result.stdout)
-            return response.get("response", "").strip()
+            response = result['response']
+            return response
         
         except (subprocess.CalledProcessError, FileNotFoundError, json.JSONDecodeError) as e:
             print(f"Error generating documentation with Ollama: {str(e)}")
@@ -224,6 +218,7 @@ class DocumentationGenerator:
 
 if __name__ == "__main__":
     import argparse
+
     
     parser = argparse.ArgumentParser(description="Generate documentation for a project using Ollama with DeepSeek model.")
     parser.add_argument("repo_path", help="Path to the source code repository")
