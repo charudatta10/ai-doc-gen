@@ -1,75 +1,100 @@
-**Contribution Guide for ai-doc-gen**
+Contribution Guide for ai-doc-gen
 =====================================
 
-Welcome to the contribution guide for ai-doc-gen! We're thrilled to have you on board. This guide outlines the process for reporting issues, pulling requests, adhering to coding standards, testing requirements, and documentation guidelines.
-
-**Reporting Issues**
+Table of Contents
 -----------------
 
-To report an issue, please follow these steps:
+1. [How to Report Issues](#how-to-report-issues)
+2. [Pull Request Process](#pull-request-process)
+3. [Coding Standards](#coding-standards)
+4. [Testing Requirements](#testing-requirements)
+5. [Documentation Guidelines](#documentation-guidelines)
 
-1. **Create a new issue**: Head over to the project's [issue tracker](https://github.com/charudatta10/ai-doc-gen/issues) and create a new issue.
-2. **Provide clear description**: In the description field, provide as much detail as possible about the issue you're experiencing.
-3. **Include relevant logs or files**: If applicable, attach any relevant logs, configuration files, or output that may help us diagnose the issue.
+### How to Report Issues
 
-**Pull Request Process**
-----------------------
+Reporting issues is crucial for the smooth operation and improvement of the ai-doc-gen project. To report an issue, follow these steps:
 
-To contribute to ai-doc-gen, please follow these steps:
+1. **Open a new issue**: Click on the "New Issue" button on the GitHub repository's page.
+2. **Provide detailed information**: Include as much detail as possible about the issue, such as:
+	* A clear description of the problem
+	* Steps to reproduce the issue (if applicable)
+	* Any error messages or logs related to the issue
+3. **Use the correct label**: Ensure that you select the correct label for your issue from the dropdown menu. This will help us categorize and prioritize issues efficiently.
+4. **Include relevant files**: If possible, attach relevant files or code snippets to help us understand the issue better.
 
-1. ** Fork the repository**: Clone the repository and create a new branch from `main`.
-2. **Make changes**: Make your desired changes to the codebase.
-3. **Write tests**: Write tests for your changes using our testing framework (more on this below).
-4. **Commit changes**: Commit all changes, including tests, with a descriptive commit message.
-5. **Create a pull request**: Create a new pull request against the `main` branch.
+### Pull Request Process
 
-**Coding Standards**
-------------------
+The pull request process is an essential part of contributing to ai-doc-gen. Here's how you can follow it:
 
-We follow the following coding standards:
+1. **Create a new branch**: Create a new branch from the `main` branch using `git checkout -b feature/new-feature`.
+2. **Make changes**: Make your changes and commits, following our coding standards.
+3. **Write tests**: Write unit tests or integration tests to validate your changes.
+4. **Commit changes**: Commit your changes with meaningful commit messages (e.g., "feat: add new documentation feature").
+5. **Push changes**: Push your branch to the remote repository using `git push origin feature/new-feature`.
+6. **Open a pull request**: Open a pull request against the `main` branch.
 
-* **Indentation**: Use 4 spaces for indentation (not tabs).
-* **Line length**: Limit lines to 80 characters.
-* **Naming conventions**: Follow PEP 8 naming conventions (e.g., `snake_case`).
+### Coding Standards
 
-**Testing Requirements**
-----------------------
+To ensure consistency and readability in our codebase, we follow these coding standards:
 
-To ensure our codebase is stable, we require the following:
+1. **Use PEP 8 style guide**: Our primary Python files should conform to the PEP 8 style guide.
+2. **Use meaningful variable names**: Use descriptive variable names that indicate their purpose.
+3. **Follow docstring conventions**: Write clear and concise docstrings for functions, classes, and modules.
+4. **Avoid global variables**: Refrain from using global variables; instead, use parameters or function-scoped variables.
 
-* **Unit tests**: Write unit tests for all new code changes using our testing framework.
-* **Integration tests**: Write integration tests to verify interactions between different components.
+Example:
+```python
+def calculate_area(length: float, width: float) -> float:
+    """
+    Calculate the area of a rectangle.
 
-For more information on our testing framework, please refer to [tasks.py](https://github.com/charudatta10/ai-doc-gen/blob/main/tasks.py).
+    Args:
+        length (float): The length of the rectangle.
+        width (float): The width of the rectangle.
 
-**Documentation Guidelines**
----------------------------
+    Returns:
+        float: The area of the rectangle.
+    """
+    return length * width
+```
+### Testing Requirements
 
-To maintain accurate and up-to-date documentation, follow these guidelines:
+To ensure our project meets quality standards, we need to write comprehensive tests. Here's what you should do:
 
-* **Use Markdown**: Document everything using Markdown (e.g., `# heading`, `## subheading`).
-* **Keep it concise**: Keep your documentation brief and to the point.
-* **Use examples**: Include code examples where applicable.
+1. **Write unit tests**: Write test cases for individual functions or classes using a testing framework (e.g., pytest).
+2. **Write integration tests**: Write test cases that cover interactions between components.
+3. **Test documentation functionality**: Test the documentation generator to ensure it produces accurate and complete documentation.
 
-**Example: Contribute to ai-doc-gen**
------------------------------------
+Example:
+```python
+# tests/test_calculate_area.py
 
-Here's an example of how you can contribute to ai-doc-gen:
+import pytest
+from ai_doc_gen import calculate_area
 
-1. **Create a new branch**: `git checkout -b feature/new-feature`
-2. **Make changes**: Edit `tasks.py` to add a new test
-3. **Write tests**: Write unit tests for the changes using our testing framework
-4. **Commit changes**: Commit all changes, including tests, with a descriptive commit message: `git commit -m "Added new test"`
-5. **Create a pull request**: Create a new pull request against the `main` branch
+def test_calculate_area():
+    assert calculate_area(10, 20) == 200
+```
+### Documentation Guidelines
 
-**Acknowledgments**
------------------
+To generate comprehensive project documentation using AI:
 
-We'd like to thank [sponsors](https://github.com/sponsors/charudatta10) for their support.
+1. **Install required libraries**: Install `ollama` and `llama` to access the documentation generator.
+2. **Run the script**: Run the `tasks.py` script with the command `invoke`.
+3. **Review and edit**: Review generated documentation for accuracy and completeness; make any necessary edits.
 
-**References**
---------------
+Example:
+```python
+# tasks.py
 
-For more information on our testing framework, please refer to [tasks.py](https://github.com/charudatta10/ai-doc-gen/blob/main/tasks.py).
+import ollama
+from llama import DocumentationGenerator
 
-By following these guidelines, you'll be helping us maintain a high-quality codebase and documentation. Thank you for contributing to ai-doc-gen!
+def generate_documentation():
+    docgen = DocumentationGenerator()
+    docgen.generate()
+```
+Conclusion
+----------
+
+Contributing to ai-doc-gen is an exciting way to help improve the project and its documentation. By following this contribution guide, you'll be able to report issues effectively, create high-quality pull requests, write comprehensive tests, and generate accurate documentation.

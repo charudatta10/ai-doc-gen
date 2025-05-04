@@ -1,110 +1,78 @@
-# Getting Started Guide for ai-doc-gen
+**Getting Started with ai-doc-gen**
+=====================================
 
-## Prerequisites and System Requirements
----------------
+Welcome to ai-doc-gen, a project that utilizes artificial intelligence (AI) to generate project documentation. This guide will walk you through setting up and using ai-doc-gen.
 
-To get started with ai-doc-gen, you will need:
+**Prerequisites and System Requirements**
+----------------------------------------
 
-### 1. Python Environment
+Before proceeding, ensure you have the following:
 
-*   Ensure that you have Python installed on your system.
-*   Install pip, the package installer for Python, if it's not already installed.
+*   A compatible operating system (Windows, macOS, or Linux)
+*   A working Python environment (version 3.8 or higher recommended)
+*   The `ollama` and `llama` libraries installed (`pip install ollama llama`)
+*   Basic knowledge of Markdown formatting
 
-### 2. Docker Installation
-
-ai-doc-gen uses Docker to run and deploy applications. You can download the Docker Desktop client from the official Docker website: <https://www.docker.com/get-started>
-
-### 3. .NET Core SDK
-
-The .NET Core SDK is required for running ai-doc-gen. Install it using the following command:
-
-```bash
-dotnet tool install --global dotnet/sdk-6.0
-```
-
-## Installation Instructions
-------------------------
-
-To get started with ai-doc-gen, follow these steps:
+**Installation Instructions**
+---------------------------
 
 1.  Clone the repository using Git:
-
     ```bash
 git clone https://github.com/charudatta10/ai-doc-gen.git
 ```
 2.  Navigate to the project directory:
-
-    ```bash
+    ```
 cd ai-doc-gen
 ```
 
-## Basic Configuration
---------------------
+**Basic Configuration**
+----------------------
 
-Before running the application, you need to configure it properly.
+To start generating documentation, follow these steps:
 
-### 1. Configure Environment Variables
+1.  Initialize a new configuration file using the `.pre-commit-config.yaml` file as an example:
+    ```yml
+# .pre-commit-config.yaml
 
-Create a new file named `.env` in the root of your project and add the following configuration variables:
-
-| Variable Name | Variable Value | Description |
-| --- | --- | --- |
-
-*   Add any required environment variables for your specific use case, such as API keys or database credentials.
-
-### 2. Configure Docker Compose
-
-Create a new file named `docker-compose.yml` in the root of your project with the following configuration:
-
-```yml
-version: '3'
-services:
-    app:
-        build: .
-        ports:
-            - "8080:80"
+repos:
+- repo: https://github.com/charudatta10/pre-commit-config
+  rev: main
+  hooks:
+  - id: black
+    name: Black Code Formatter
+    entry: black --line-length 88 .
+  - id: flake8
+    name: Flake8 Linting
+    entry: flake8 . --count --select=E9,F63,E10,E11,E12,E15,E16,E18,E27,E78,E80,R,C,F,C,H,R,O,D --show-covers .
 ```
-
-This configuration tells Docker to build the application from the current directory (`.`) and map port 80 on the host machine to port 8080 in the container.
-
-### 3. Create a Configuration File
-
-Create a new file named `config.yaml` with the following configuration:
-
-```yml
-name: ai-doc-gen
-version: 1.0.0
-description: AI documentation generator
-```
-
-## Running a Simple Example
--------------------------
-
-To test the application, run it using the following command:
-
-```bash
+2.  Run the project using `invoke`:
+    ```
 invoke
 ```
 
-This will start the Docker container and make the application available at `http://localhost:8080`.
+**Running a Simple Example**
+---------------------------
 
-## Where to Go Next
-------------------
+To see ai-doc-gen in action, follow these steps:
 
-After getting started with ai-doc-gen, you can explore the project's features and functionality.
+1.  Create a new file named `example.md` and add some basic Markdown content:
+    ```md
+# Hello World
 
-*   Check out the [Features](#features) section of this guide for more information on the capabilities of ai-doc-gen.
-*   Look into the [Contributing](#contributing) section for guidance on contributing to this project.
-*   For complete documentation on ai-doc-gen, refer to our [README.md](https://github.com/charudatta10/ai-doc-gen/blob/main/README.md).
+This is an example of ai-doc-gen in action.
+```
+2.  Run the following command to generate documentation for the `example.md` file:
+    ```
+invoke --config example.md
+```
 
-## Contributing
-------------
+**Where to Go Next**
+--------------------
 
-Contributions are welcome! Please open an issue or submit a pull request for any bugs or feature requests. Report a bug or Request a feature.
+After setting up and using ai-doc-gen, you can explore additional features and configurations:
 
-[Report a bug or Request a feature](https://github.com/charudatta10/ai-doc-gen/issues)
+*   Check out the [Contributing Guide](CONTRIBUTING.md) for ways to contribute to the project.
+*   Refer to the [License Agreement](LICENSE.md) for terms of use and attribution requirements.
+*   Visit the [GitHub Repository](https://github.com/charudatta10/ai-doc-gen) for updates, bug reports, and feature requests.
 
-## Copyright Notice
------------------
-
-Please note that ai-doc-gen is licensed under the [GPL-3.0 License](https://github.com/charudatta10/ai-doc-gen/blob/main/LICENSE.md).
+That's it! With these instructions, you should be able to get started with ai-doc-gen and begin generating project documentation using AI.

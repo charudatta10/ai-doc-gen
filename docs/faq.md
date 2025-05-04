@@ -1,81 +1,49 @@
-# Frequently Asked Questions for ai-doc-gen
+# Frequently Asked Questions for ai-doc-gen Project
 
-## Common Installation Issues
+## Installation Issues
 
-### .gitignore not recognized by Git
+### Common problems and solutions:
 
-If you're experiencing issues with `.gitignore` not being recognized by Git, try the following:
-
-* Ensure that the file is in the correct location (`C:\Users\korde\Home\Github\ai-doc-gen`)
-* Verify that the `.gitignore` file contains valid paths for files and directories
-* Run `git config --local core.excludesfile .gitignore` to update Git's configuration
-
-### Docker installation failed
-
-If you encounter issues during Docker installation, check the following:
-
-* Ensure that Docker is installed on your system
-* Verify that the `Dockerfile` exists in the project directory (`C:\Users\korde\Home\Github\ai-doc-gen`)
-* Run `docker --version` to verify the Docker installation
+*   **Issue:** The project doesn't install successfully.
+    *   Solution: Ensure you have Python installed on your system. You can check by running `python --version` in your terminal. If it's not installed, follow the instructions to download and install Python from <https://www.python.org/downloads/>.
+*   **Issue:** Git is not installed properly during installation.
+    *   Solution: Make sure you have Git installed on your system. You can check by running `git --version` in your terminal. If it's not installed, follow the instructions to download and install Git from <https://git-scm.com/downloads/>.
+*   **Issue:** The Dockerfile is missing or corrupted.
+    *   Solution: Make sure the Dockerfile exists in the project directory and is not corrupted. You can check by running `docker build -t ai-doc-gen .` and verify if there are any errors.
 
 ## Configuration Problems
 
-### .env file not loaded by Python
+### Common problems and solutions:
 
-If you're experiencing issues with the `.env` file not being loaded by Python, ensure that:
-
-* The `.env` file exists in the project directory (`C:\Users\korde\Home\Github\ai-doc-gen`)
-* The `python-dotenv` library is installed (`pip install python-dotenv`)
-* Run `import os; os.load_env()` to verify that the environment variables are being loaded
-
-### Ollama configuration issues
-
-If you encounter problems with Ollama, check:
-
-* Ensure that the `ollama` library is installed (`pip install ollama`)
-* Verify that the `ollla.config` file exists in the project directory
-* Check the `ollla.config` file for any syntax errors or incorrect configurations
+*   **Issue:** The configuration file `.env` does not exist.
+    *   Solution: Create a new file named `.env` in the project directory with the required environment variables. You can find more information on how to configure the `.env` file in the `README.md` file.
+*   **Issue:** The configuration file is invalid or corrupted.
+    *   Solution: Check if there are any typos or syntax errors in the `.env` file. Make sure to use the correct syntax for each environment variable.
 
 ## Usage Questions
 
-### How to generate documentation
+### Common problems and solutions:
 
-To generate documentation, run the following command:
-
-```bash
-invoke
-```
-
-This will execute the tasks.py script and generate documentation.
-
-### How to update documentation
-
-To update the documentation, modify the content in the README.md file.
+*   **Issue:** The project does not run successfully when invoked.
+    *   Solution: Ensure you have executed the `invoke` command correctly. You can check by running `echo "Running invoke" >> ai-doc-gen.log` to see if there are any errors in the log file.
+*   **Issue:** The project does not generate documentation correctly.
+    *   Solution: Check if the required dependencies are installed and up-to-date. Run `pip install -r requirements.txt` to ensure all dependencies are installed.
 
 ## Troubleshooting Tips
 
-### Issues with GitHub actions
+### Common problems and solutions:
 
-If you encounter issues with GitHub Actions, try the following:
-
-* Ensure that your GitHub Action configuration is correct
-* Verify that the `actions/checkout` action is being executed correctly
-* Check the GitHub Actions log for any errors or warnings
-
-### Issues with Python environment
-
-If you experience problems with the Python environment, ensure that:
-
-* The Python environment is properly activated
-* All necessary dependencies are installed (`pip install -r requirements.txt`)
-* Run `python tasks.py` to verify that the script executes correctly
+*   **Issue:** The project takes a long time to run or is unresponsive.
+    *   Solution: Make sure you have enough resources (CPU, RAM, etc.) available for the project. You can try increasing the memory allocated to the Docker container by running `docker run --rm -it --memory 1024m ai-doc-gen`.
+*   **Issue:** The documentation does not render correctly.
+    *   Solution: Check if there are any issues with the Markdown files or images. Make sure that all dependencies, such as `llama`, are installed and up-to-date.
 
 ## Community Resources
 
-For further assistance or support, please refer to:
+### Additional resources:
 
-* [Contribution Guidelines](CONTRIBUTING.md)
-* [GitHub Repository](https://github.com/charudatta10/ai-doc-gen)
-* [Stack Overflow Tag](https://stackoverflow.com/questions/tagged/ai-doc-gen)
+*   GitHub Issues: <https://github.com/charudatta10/ai-doc-gen/issues>
+*   Documentation Repository: <https://charudatta10.github.io/docs/>
+*   Project Website: <https://charudatta10.github.io/LinkNet/>
 
-Please feel free to report any bugs or feature requests on our GitHub issues page: https://github.com/charudatta10/ai-doc-gen/issues
+If you have any further questions or need help with the project, please don't hesitate to open an issue on GitHub.
