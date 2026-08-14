@@ -1,5 +1,7 @@
 # ai-doc-gen
 
+![Version](https://img.shields.io/github/v/release/charudatta10/ai-doc-gen)
+
 <!-- Badges: Project Status GitHub -->
 ![license](https://flat.badgen.net/static/license/GPL-3.0/blue)
 ![release](https://flat.badgen.net/github/release/charudatta10/ai-doc-gen)
@@ -19,9 +21,9 @@
 <!-- Badges: Tools used -->
 `python` `ollama` `llama`
 
-## Documentation
+## What is this?
 
-generate project documentation using ai   
+ai-doc-gen uses AI models such as Ollama and Llama to generate project documentation automatically. It inspects a codebase and produces structured documentation for it. Run it with invoke and the generated docs are written into the docs folder.   
 
 ## Features
 
@@ -51,6 +53,10 @@ invoke
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any bugs or feature requests. [Report a bug or Request a feature](https://github.com/charudatta10/ai-doc-gen/issues)
+
+## License
+
+This project is licensed under the terms in [LICENSE.md](LICENSE.md).
 
 ## COPYRIGHT NOTICE
 
