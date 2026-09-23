@@ -55,6 +55,10 @@ cd ai-doc-gen
 invoke
 ```
 
+## Docs
+
+See the [documentation](docs/index.md) for an overview, features, and quickstart.
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any bugs or feature requests. [Report a bug or Request a feature](https://github.com/charudatta10/ai-doc-gen/issues)
